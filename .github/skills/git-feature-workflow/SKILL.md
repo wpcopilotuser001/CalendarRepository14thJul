@@ -67,13 +67,17 @@ Use repository-local config (without `--global`) unless user requests otherwise.
 
 ### 4. Stage Changes
 
-Stage all changes:
+Stage intended changes:
 
 ```bash
-git add .
+git add <file1> <file2>
 ```
 
-Or stage specific files if user specifies them.
+If the user explicitly requests all current changes, then use:
+
+```bash
+git add -A
+```
 
 ### 5. Commit with Descriptive Message
 
@@ -157,20 +161,20 @@ gh pr view --web
 ## Decision Points
 
 **Already on a feature branch?**
-- Yes → Skip branch creation, proceed to staging
-- No → Create new feature branch first
+- Yes -> Skip branch creation, proceed to staging
+- No -> Create new feature branch first
 
 **Git identity configured?**
-- Yes → Proceed to commit
-- No → Ask user and configure
+- Yes -> Proceed to commit
+- No -> Ask user and configure
 
 **GitHub CLI available?**
-- Yes → Use `gh pr create` for seamless PR creation
-- No → Provide web URL for manual PR creation
+- Yes -> Use `gh pr create` for seamless PR creation
+- No -> Provide web URL for manual PR creation
 
 **Changes already staged?**
-- Yes → Skip staging, proceed to commit
-- No → Stage with `git add`
+- Yes -> Skip staging, proceed to commit
+- No -> Stage with `git add`
 
 ## Quality Checks
 

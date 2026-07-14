@@ -71,7 +71,7 @@ def test_index_shows_empty_state_when_no_events_for_day(monkeypatch, client):
     assert "No events scheduled for today." in page
 
 
-def test_index_returns_500_when_date_provider_fails(monkeypatch, client):
+def test_index_raises_when_date_provider_fails_in_testing_mode(monkeypatch, client):
     class BrokenDate:
         @classmethod
         def today(cls):
