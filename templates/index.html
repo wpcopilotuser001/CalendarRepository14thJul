@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calendar App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <header>
+            <p class="kicker">Today</p>
+            <h1>{{ weekday }}</h1>
+            <p class="date">{{ today }}</p>
+        </header>
+
+        <section>
+            <h2>Events</h2>
+            {% if events %}
+                <ul class="event-list">
+                    {% for event in events %}
+                        <li class="event-item">
+                            <span class="event-time">{{ event.time }}</span>
+                            <span class="event-title">{{ event.title }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="empty">No events scheduled for today.</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>
